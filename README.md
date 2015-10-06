@@ -1,8 +1,8 @@
 This repo demonstrates the use of [PRoot][proot], a powerful [chroot][chroot]
 emulator without the root permission. PRoot/chroot takes an arbitrary directory
 as if it is a new root filesystem. It effectively provides a way to launch a
-complex pipeline fully contained in a single directory. The following shows an
-example:
+complex pipeline with dependencies fully contained in a single directory. The
+following shows an example:
 ```sh
 wget https://github.com/lh3/proot-wrapper/releases/download/v1/proot-20151005.tgz
 tar -zxf proot-20151005.tgz
@@ -42,6 +42,13 @@ proot/proot -r sdust.rfs -b $HOME -b /dev sdust
 Then programs inside `sdust.rfs` can access files in the home directory.
 Similarly, if we map all parent mount points into the new root filesystem, we
 can access every file in the parent filesystem. `proot.pl` achieves this goal.
+
+How to create such a `sdust.rfs`? We can use [CARE][care], a sister project of
+PRoot. CARE grabs all dependencies and package them in a single rootfs. This
+example was created with CARE on an Ubuntu 12.04 machine. Note that
+`sdust.rfs/bin/sdust` doesn't run on CentOS6 by itself due to glibc ABI
+incompatibility, but with PRoot, it runs smoothly as `sdust.rfs` carries the
+necessary dependencies.
 
 [proot]: http://proot.me
 [chroot]: https://en.wikipedia.org/wiki/Chroot
