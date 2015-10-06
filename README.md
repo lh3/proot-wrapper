@@ -45,10 +45,10 @@ can access every file in the parent filesystem. `proot.pl` achieves this goal.
 
 How to create such a `sdust.rfs`? We can use [CARE][care], a sister project of
 PRoot. CARE grabs all dependencies and package them in a single rootfs. This
-example was created with CARE on an Ubuntu 12.04 machine. Note that
-`sdust.rfs/bin/sdust` doesn't run on CentOS6 by itself due to glibc ABI
-incompatibility, but with PRoot, it runs smoothly as `sdust.rfs` carries the
-necessary dependencies.
+example was adapted from a CARE dump created on an Ubuntu 12.04 machine. Note
+that `sdust.rfs/bin/sdust` doesn't run on CentOS6 by itself due to glibc ABI
+incompatibility, but with PRoot, it runs smoothly. However, the example doesn't
+run on CentOS5 due to its ancient Linux kernel 2.6.18.
 
 [proot]: http://proot.me
 [chroot]: https://en.wikipedia.org/wiki/Chroot
