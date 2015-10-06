@@ -10,6 +10,38 @@ wget https://github.com/lh3/proot-wrapper/releases/download/v1/sdust.rfs.tgz
 tar -zxf sdust.rfs.tgz
 proot/proot.pl sdust.rfs sdust MT.fa
 ```
+The structure of `sdust.rfs` looks like:
+```
+sdust.rfs
+|-- bin
+|   `-- sdust
+|-- lib
+|   `-- x86_64-linux-gnu
+|       |-- ld-2.15.so
+|       |-- libc-2.15.so
+|       |-- libc.so.6 -> libc-2.15.so
+|       |-- libz.so.1 -> libz.so.1.2.3.4
+|       `-- libz.so.1.2.3.4
+`-- lib64
+    `-- ld-linux-x86-64.so.2
+```
+When we run
+```sh
+proot/proot -r sdust.rfs sdust
+```
+PRoot effectively creates a new root filesystem isolated from the rest of the
+parent filesystem. In this new root filesystem, executable `sdust` is in the
+default system `bin` directory and linked to dynamic libraries in `lib` and
+`lib64` inside `sdust.rfs`, but not the libraries in the parent filesystem.
+
+In addition to dependency isolation, PRoot can also mount parent filesystems
+into the new root filesystem. For example
+```sh
+proot/proot -r sdust.rfs -b $HOME -b /dev sdust
+```
+Then programs inside `sdust.rfs` can access files in the home directory.
+Similarly, if we map all parent mount points into the new root filesystem, we
+can access every file in the parent filesystem. `proot.pl` achieves this goal.
 
 [proot]: http://proot.me
 [chroot]: https://en.wikipedia.org/wiki/Chroot

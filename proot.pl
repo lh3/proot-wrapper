@@ -22,6 +22,7 @@ while (<$fh>) {
 	my $last = $t[@t-1];
 	push(@mnt, "-b $last") unless defined($skip{$last});
 }
+push(@mnt, "-b /dev", "-b /proc");
 close($fh);
 
 # run
