@@ -50,6 +50,10 @@ that `sdust.rfs/bin/sdust` doesn't run on CentOS6 by itself due to glibc ABI
 incompatibility, but with PRoot, it runs smoothly. However, the example doesn't
 run on CentOS5 due to its ancient Linux kernel 2.6.18.
 
+PRoot is even designed to isolate an entire Linux distribution. It is of course
+able to isolate simpler systems. PRoot *may* potentially provide a solution to
+portable Linux binaries.
+
 [proot]: http://proot.me
 [chroot]: https://en.wikipedia.org/wiki/Chroot
 [care]: http://reproducible.io
