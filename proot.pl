@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 
-die("Usage: proot.pl <rootfs> <cmd> [arguments]\n") if @ARGV < 2;
+die("Usage: proot.pl <rootfs> [cmd] [arguments]\n") if @ARGV == 0;
 
 # look for 'proot'
 my $proot = &gwhich('proot') || die("ERROR: failed to find the 'proot' executable\n");
@@ -22,7 +22,7 @@ while (<$fh>) {
 	my $last = $t[@t-1];
 	push(@mnt, "-b $last") unless defined($skip{$last});
 }
-push(@mnt, "-b /dev", "-b /proc");
+push(@mnt, "-b /dev", "-b /proc", "-b $ENV{HOME}", "-b /etc/passwd", "-b /etc/group");
 close($fh);
 
 # run
