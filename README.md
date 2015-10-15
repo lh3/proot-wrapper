@@ -1,6 +1,6 @@
 ## Getting Started
 ```sh
-# download example source code, vcf-validator which requires both c++11 and boost
+# acquire "vcf-validator" source code as an example; it needs both c++11 and boost
 git clone https://github.com/EBIvariation/vcf-validator
 # download, unpack and launch centos5dev
 wget https://github.com/lh3/proot-wrapper/releases/download/v2/centos5dev-v2.tar.bz2
@@ -20,7 +20,7 @@ Centos5dev is a small package (46MB) that helps to create portable precompiled
 binaries for 64-bit Linux. It comes with fundamental libraries from CentOS5 and
 recent development tools such as cmake-3.3, gcc-4.9 and boost-1.57.  It uses
 [PRoot][proot] to *mimic* a virtual machine entirely in the user space (i.e.
-the root permission is *never* required), such that we can compile tools as if
+no root permission is *ever* required), such that we can compile tools as if
 we are working on a CentOS 5 machine. As tools compiled on CentOS 5 are easily
 portable to other Linux distributions, tools compiled with centos5dev are also
 portable.
