@@ -16,22 +16,14 @@ exit  # or press "control-D"
 
 ## About centos5dev
 
-Centos5dev is a package that helps to create portable precompiled binaries for
-64-bit Linux. It comes with fundamental libraries from CentOS5 and recent
-development tools such as cmake-3.3, gcc-4.9 and boost-1.57.  It uses
+Centos5dev is a small package (46MB) that helps to create portable precompiled
+binaries for 64-bit Linux. It comes with fundamental libraries from CentOS5 and
+recent development tools such as cmake-3.3, gcc-4.9 and boost-1.57.  It uses
 [PRoot][proot] to *mimic* a virtual machine entirely in the user space (i.e.
-the root permission is *never* required), such that we can compile tools
-as if we are working on a CentOS 5 machine. As tools compiled on CentOS 5 are
-easily portable to other Linux distributions, tools compiled with centos5dev
-are also portable.
-
-Centos5dev can also be used to test if a binary works on CentOS 5:
-```sh
-cd mytool-dir
-/path/to/centos5dev/run
-./mytool
-```
-If `mytool` does not run, it will not work on CentOS 5.
+the root permission is *never* required), such that we can compile tools as if
+we are working on a CentOS 5 machine. As tools compiled on CentOS 5 are easily
+portable to other Linux distributions, tools compiled with centos5dev are also
+portable.
 
 Centos5dev has the following tools or libraries installed, all statically
 linked: gcc-4.9.2, cmake-3.3.2, boost-1.57, zlib-1.2.8, sqlite-3.8.11.1,
