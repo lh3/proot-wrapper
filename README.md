@@ -36,7 +36,8 @@ busybox-1.23.2.
 permission. PRoot/chroot takes an arbitrary directory as if it is a new root
 filesystem, isolated from the rest of filesystems. It effectively provides a
 way to launch a complex pipeline, or even an entire Linux distribution, with
-dependencies fully contained in a single directory.
+dependencies fully contained in a single directory.  PRoot is very general.
+Centos5dev is just one of the many possible applications.
 
 [proot]: http://proot.me
 [chroot]: https://en.wikipedia.org/wiki/Chroot
