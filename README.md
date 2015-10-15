@@ -35,7 +35,8 @@ If `mytool` does not run, it will not work on CentOS 5.
 
 Centos5dev has the following tools or libraries installed, all statically
 linked: gcc-4.9.2, cmake-3.3.2, boost-1.57, zlib-1.2.8, sqlite-3.8.11.1,
-sparsehash-2.0.2, LibreSSL-2.1.3, curl-7.40.0 and libssh2-1.4.3.
+sparsehash-2.0.2, LibreSSL-2.1.3, libssh2-1.4.3, curl-7.40.0 and
+busybox-1.23.2.
 
 ## About PRoot
 
