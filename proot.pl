@@ -22,7 +22,7 @@ while (<$fh>) {
 	my $last = $t[@t-1];
 	push(@mnt, "-b $last") unless defined($skip{$last});
 }
-push(@mnt, "-b /dev", "-b /proc", "-b $ENV{HOME}", "-b /etc/passwd", "-b /etc/group");
+push(@mnt, "-b /dev", "-b /proc", "-b $ENV{HOME}", "-b /etc/passwd", "-b /etc/group", "-b /etc/resolv.conf");
 close($fh);
 
 # clear existing environment variables because they may interfere with the "VM"
