@@ -9,7 +9,7 @@ die("Usage: proot.pl <rootfs> [cmd] [arguments]\n") if @ARGV == 0;
 my $proot = &gwhich('proot') || die("ERROR: failed to find the 'proot' executable\n");
 
 # skip some system mount points
-my @skip = ('/', '/usr', '/lib', '/lib64', '/usr/lib', '/usr/lib64');
+my @skip = ('/', '/usr', '/lib', '/lib64', '/usr/lib', '/usr/lib64', '/usr/local', '/usr/local/lib', '/usr/local/lib64');
 my %skip;
 $skip{$_} = 1 for (@skip);
 
