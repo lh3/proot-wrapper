@@ -22,6 +22,9 @@ while (<$fh>) {
 	my $last = $t[@t-1];
 	push(@mnt, "-b $last") unless defined($skip{$last});
 }
+$ENV{PATH} = "/usr/local/bin:/bin:/usr/bin:/sbin";
+$ENV{LIBRARY_PATH} = $ENV{LD_LIBRARY_PATH} = "";
+$ENV{CPATH} = $ENV{C_INCLUDE_PATH} = $ENV{CPLUS_INCLUDE_PATH} = "";
 push(@mnt, "-b /dev", "-b /proc", "-b $ENV{HOME}", "-b /etc/passwd", "-b /etc/group");
 close($fh);
 
