@@ -15,15 +15,20 @@ $skip{$_} = 1 for (@skip);
 
 # get the list of non-system mount points
 my ($fh, @mnt);
-open($fh, "df -P |") || die;
+open($fh, "/etc/mtab") || die;
 while (<$fh>) {
-	next if $. == 1;
 	my @t = split;
-	my $last = $t[@t-1];
-	push(@mnt, "-b $last") unless defined($skip{$last});
+	my $last = $t[1];
+	next if (defined($skip{$last}));
+	system(qq/bash -c "read -t1 < <(stat -t $last 2>&-)"/);
+	if ($? == 0) {
+		push(@mnt, "-b $last");
+	} else {
+		warn("Warning: mount point '$last' is stale.\n");
+	}
 }
-push(@mnt, "-b /dev", "-b /proc", "-b $ENV{HOME}", "-b /etc/passwd", "-b /etc/group", "-b /etc/resolv.conf");
 close($fh);
+push(@mnt, "-b /dev", "-b /proc", "-b $ENV{HOME}", "-b /etc/passwd", "-b /etc/group", "-b /etc/resolv.conf");
 
 # clear existing environment variables because they may interfere with the "VM"
 $ENV{PATH} = "/usr/local/bin:/bin:/usr/bin:/sbin";
